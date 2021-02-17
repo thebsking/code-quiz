@@ -6,31 +6,37 @@ let selectionArea = document.querySelector("#options");
 let userScore = 0;
 let testContent = [
     {
-        question: '',
-        options: [''],
-        answer: ''
+        question: 'Commonly used data types DO NOT include',
+        options: ['strings', 'booleans', 'alerts', 'numbers'],
+        answer: 'alerts'
     },
     {
-        question: '',
-        options: [''],
-        answer: ''
+        question: 'The condition in an if/else statement is enclosed within ____',
+        options: ['qutoes', 'curly braces', 'square brackets', 'parentheses'],
+        answer: 'parentheses'
     },
     {
-        question: '',
-        options: [''],
-        answer: ''
+        question: 'What data types can be stored in an array?',
+        options: ['strings', 'numbers', 'other arrays', 'all of the above'],
+        answer: 'all of the above'
     },
     {
-        question: '',
-        options: [''],
-        answer: ''
+        question: 'Using the browser\'s dev tools, where would you find "local storage"?',
+        options: ['console', 'sources', 'application', 'elements'],
+        answer: 'application'
     },
     {
-        question: '',
-        options: [''],
-        answer: ''
+        question: 'What is the index for the first element of an array?',
+        options: ['0', '-1', '1', 'A'],
+        answer: '0'
     },
 ];
+
+//start listener
+startBtn.addEventListener('click', function(){
+    countdown();
+    runTheGame();
+});
 
 //countdown timer
 function countdown() {
@@ -48,3 +54,19 @@ function countdown() {
     
   };
 
+function runTheGame () {
+  //display quiz content
+    startBtn.style.display = 'none';
+    let q = 0;
+    //question
+    let currentQuestion = document.createElement("h2");
+    currentQuestion.textContent = testContent[q].question;
+    questionArea.appendChild(currentQuestion);
+
+    //options
+    for (var i = 0; i < testContent[0].options.length; i++){
+        let answerOptions = document.createElement("button");
+        answerOptions.textContent = testContent[q].options[i];
+        selectionArea.appendChild(answerOptions);
+    };
+};
