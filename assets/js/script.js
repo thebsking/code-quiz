@@ -32,7 +32,7 @@ let testContent = [
     },
 ];
 
-//start listener
+//start button listener
 startBtn.addEventListener('click', function(){
     countdown();
     runTheGame();
@@ -54,6 +54,7 @@ function countdown() {
     
   };
 
+ //content of the quiz 
 function runTheGame () {
   //display quiz content
     startBtn.style.display = 'none';
@@ -62,11 +63,25 @@ function runTheGame () {
     let currentQuestion = document.createElement("h2");
     currentQuestion.textContent = testContent[q].question;
     questionArea.appendChild(currentQuestion);
-
+    function resetPlayArea() {
+        answerOptions.textContent = '';
+        currentQuestion.textContent = ''; 
+    }
     //options
     for (var i = 0; i < testContent[0].options.length; i++){
         let answerOptions = document.createElement("button");
         answerOptions.textContent = testContent[q].options[i];
         selectionArea.appendChild(answerOptions);
+        selectionArea.addEventListener('click', function(event) {
+            if (event.target.textContent === testContent[q].answer){
+                resetPlayArea();
+                userScore++;
+                q++;
+            } else {
+                resetPlayArea();
+                q++;
+            };
+        });
     };
+    
 };
