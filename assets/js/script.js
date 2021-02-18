@@ -59,29 +59,35 @@ function runTheGame () {
   //display quiz content
     startBtn.style.display = 'none';
     let q = 0;
-    //question
+    
+    //display the question
     let currentQuestion = document.createElement("h2");
     currentQuestion.textContent = testContent[q].question;
     questionArea.appendChild(currentQuestion);
-    function resetPlayArea() {
-        answerOptions.textContent = '';
-        currentQuestion.textContent = ''; 
-    }
-    //options
+    // function resetPlayArea() {
+    //     answerOptions.textContent = '';
+    //     currentQuestion.textContent = ''; 
+    // };
+
+    //display available options
     for (var i = 0; i < testContent[0].options.length; i++){
         let answerOptions = document.createElement("button");
         answerOptions.textContent = testContent[q].options[i];
         selectionArea.appendChild(answerOptions);
-        selectionArea.addEventListener('click', function(event) {
-            if (event.target.textContent === testContent[q].answer){
-                resetPlayArea();
-                userScore++;
-                q++;
-            } else {
-                resetPlayArea();
-                q++;
-            };
-        });
-    };
-    
+        console.log(answerOptions)
+};
+
+    selectionArea.addEventListener('click', function(event){
+        var chosenAnswer = event.target.textContent;
+        
+        if(chosenAnswer === testContent[q].answer){
+            console.log('correct');
+            q++;
+            console.log(q);
+        } else {
+            console.log('wrong');
+            q++;
+            console.log(q);
+        }
+    })
 };
