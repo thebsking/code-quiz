@@ -50,19 +50,28 @@ function countdown() {
   
       if (timeLeft === 0) {
       clearInterval(timeInterval);
+      endGame();
       timer.textContent = "Time's up!";
     }}, 1000)
     
   };
+
+
+function endGame(){
+    rightWrong.textContent = "";
+    questionArea.textContent = "Game Over. You're score is: " + userScore;
+    timer.style.display = "none";
+    return;
+}
 
  //content of the quiz 
 function runTheGame () {
   //display quiz content
     startBtn.style.display = 'none';
     let q = 0;
-    if(q === 5){
-        clearPlayArea();
-    }
+    // if(q === 5){
+    //     endGame();
+    // }
     
     //display the question
     let currentQuestion = document.createElement("h2");
@@ -91,10 +100,12 @@ function runTheGame () {
         if(chosenAnswer === testContent[q].answer){
             rightWrong.textContent = "That's correct!";
             q++;
+            userScore += 10;
             clearPlayArea();
             if(q === 5){
-                console.log('game over');
-                return; 
+                clearPlayArea();
+                endGame(); 
+                return;
             };
             currentQuestion.textContent = testContent[q].question;
             questionArea.appendChild(currentQuestion);
@@ -105,7 +116,8 @@ function runTheGame () {
             q++;
             clearPlayArea();
             if(q === 5){
-                console.log('game over');
+                clearPlayArea();
+                endGame();
                 return;
             };
             currentQuestion.textContent = testContent[q].question;
