@@ -4,6 +4,7 @@ let startBtn = document.querySelector("#start");
 let questionArea = document.querySelector("#question");
 let selectionArea = document.querySelector("#options");
 let userScore = 0;
+let rightWrong = document.querySelector("#right-wrong");
 let testContent = [
     {
         question: 'Commonly used data types DO NOT include',
@@ -64,30 +65,43 @@ function runTheGame () {
     let currentQuestion = document.createElement("h2");
     currentQuestion.textContent = testContent[q].question;
     questionArea.appendChild(currentQuestion);
-    // function resetPlayArea() {
-    //     answerOptions.textContent = '';
-    //     currentQuestion.textContent = ''; 
-    // };
+    let answerOptions;
 
     //display available options
+    function showOptions (){
     for (var i = 0; i < testContent[0].options.length; i++){
-        let answerOptions = document.createElement("button");
+        answerOptions = document.createElement("button")
         answerOptions.textContent = testContent[q].options[i];
         selectionArea.appendChild(answerOptions);
         console.log(answerOptions)
-};
+    }};
+    showOptions();
+    function clearPlayArea(){
+        questionArea.textContent = "";
+        selectionArea.textContent= "";
+    }
 
+    //match user selection with correct answer 
     selectionArea.addEventListener('click', function(event){
         var chosenAnswer = event.target.textContent;
         
         if(chosenAnswer === testContent[q].answer){
-            console.log('correct');
+            rightWrong.textContent = "That's correct!";
             q++;
-            console.log(q);
+            clearPlayArea();
+            currentQuestion.textContent = testContent[q].question;
+            questionArea.appendChild(currentQuestion);
+            showOptions();
         } else {
-            console.log('wrong');
+            rightWrong.textContent = "Sorry, that's wrong";
             q++;
-            console.log(q);
+            clearPlayArea();
+            currentQuestion.textContent = testContent[q].question;
+            questionArea.appendChild(currentQuestion);
+            showOptions();
         }
     })
+
+    
+    
 };
