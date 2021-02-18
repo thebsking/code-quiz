@@ -3,9 +3,11 @@
 }
 
 div {
-    width: 80%;
+    width: 50%;
     text-align: center;
     margin: 0px auto 0px auto;
+    display: flex;
+    justify-content: center;
 }
 
 button {
@@ -16,4 +18,28 @@ button {
     display: block;
     padding: 10px;
     margin: 10px auto;
+    border-radius: 5px;
 }
+
+button:hover {
+    background-color: lightblue;
+    color: blue;
+    box-shadow: inset 0px 0px 5px orange;
+}
+
+#right-wrong {
+    font-size: 1.2em;
+    padding: 10px;
+}
+#question {
+    font-size: 1.5em;
+}
+div #high-score {
+    justify-content: space-evenly;
+}
+    /* .float-left {
+        float: left;
+    }
+    .float-right {
+        float: right;
+    } */
