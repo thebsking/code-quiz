@@ -32,6 +32,7 @@ let testContent = [
         answer: '0'
     },
 ];
+let timeLeft
 
 //start button listener
 startBtn.addEventListener('click', function(){
@@ -41,7 +42,7 @@ startBtn.addEventListener('click', function(){
 
 //countdown timer
 function countdown() {
-    let timeLeft = 60;
+    timeLeft = 60;
   
     // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     let timeInterval = setInterval(function() {
@@ -58,7 +59,9 @@ function countdown() {
 
 
 function endGame(){
+
     rightWrong.textContent = "";
+    userScore += timeLeft;
     questionArea.textContent = "Game Over. You're score is: " + userScore;
     timer.style.display = "none";
     return;
@@ -114,6 +117,7 @@ function runTheGame () {
         } else {
             rightWrong.textContent = "Sorry, that's wrong";
             q++;
+            timeLeft -= 10;
             clearPlayArea();
             if(q === 5){
                 clearPlayArea();
