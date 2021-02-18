@@ -60,6 +60,9 @@ function runTheGame () {
   //display quiz content
     startBtn.style.display = 'none';
     let q = 0;
+    if(q === 5){
+        clearPlayArea();
+    }
     
     //display the question
     let currentQuestion = document.createElement("h2");
@@ -69,13 +72,14 @@ function runTheGame () {
 
     //display available options
     function showOptions (){
-    for (var i = 0; i < testContent[0].options.length; i++){
+        for (var i = 0; i < testContent[0].options.length; i++){
         answerOptions = document.createElement("button")
         answerOptions.textContent = testContent[q].options[i];
         selectionArea.appendChild(answerOptions);
-        console.log(answerOptions)
-    }};
+    }
+};
     showOptions();
+
     function clearPlayArea(){
         questionArea.textContent = "";
         selectionArea.textContent= "";
@@ -84,22 +88,32 @@ function runTheGame () {
     //match user selection with correct answer 
     selectionArea.addEventListener('click', function(event){
         var chosenAnswer = event.target.textContent;
-        
         if(chosenAnswer === testContent[q].answer){
             rightWrong.textContent = "That's correct!";
             q++;
             clearPlayArea();
+            if(q === 5){
+                console.log('game over');
+                return; 
+            };
             currentQuestion.textContent = testContent[q].question;
             questionArea.appendChild(currentQuestion);
+
             showOptions();
         } else {
             rightWrong.textContent = "Sorry, that's wrong";
             q++;
             clearPlayArea();
+            if(q === 5){
+                console.log('game over');
+                return;
+            };
             currentQuestion.textContent = testContent[q].question;
             questionArea.appendChild(currentQuestion);
+
             showOptions();
         }
+
     })
 
     
