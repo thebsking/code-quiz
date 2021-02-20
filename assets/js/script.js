@@ -79,6 +79,7 @@ function endGame(){
         }
         scoreArray.push(finalScore);
         scoreStore.setItem("scores", JSON.stringify(scoreArray));
+        window.location.href = "./scores.html";
 
     })
     return;
