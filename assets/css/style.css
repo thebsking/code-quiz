@@ -37,4 +37,15 @@ button:hover {
 #high-score {
     justify-content: space-evenly;
     display: none;
-}   
+} 
+ul {
+    display: grid;
+    grid-template-areas: "names scores";
+    list-style: none;
+}
+li:nth-child(odd) {
+    grid-area: "names";
+}
+li:nth-child(even) {
+    grid-area: "scores";
+}
