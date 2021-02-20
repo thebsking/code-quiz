@@ -34,9 +34,10 @@ button:hover {
 #question {
     font-size: 1.5em;
 }
-div #high-score {
+#high-score {
     justify-content: space-evenly;
-}
+    display: none;
+}   
     /* .float-left {
         float: left;
     }

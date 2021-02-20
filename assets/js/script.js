@@ -64,6 +64,7 @@ function endGame(){
     userScore += timeLeft;
     questionArea.textContent = "Game Over. You're score is: " + userScore;
     timer.style.display = "none";
+    document.querySelector("#high-score").style.display ='block';
     return;
 }
 
