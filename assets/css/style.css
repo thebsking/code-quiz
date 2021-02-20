@@ -1,10 +1,16 @@
 * {
     box-sizing: border-box;
+    text-align: center;
+    clear: both;
 }
-
+a {
+    float: left;
+}
+header {
+    height: 50px;
+}
 div {
     width: 50%;
-    text-align: center;
     margin: 0px auto 0px auto;
     display: flex;
     justify-content: center;
@@ -14,10 +20,9 @@ button {
     list-style: none;
     background-color: blue;
     color: white;
-    text-align: center;
     display: block;
     padding: 10px;
-    margin: 10px auto;
+    margin: 20px auto;
     border-radius: 5px;
 }
 
@@ -42,10 +47,26 @@ button:hover {
     display: grid;
     grid-template-areas: "names scores";
     list-style: none;
+    width: 50%;
+    margin: 0 auto 0 auto;
+    
 }
-li:nth-child(odd) {
+li {
+    padding: 5px;
+    border: 1px solid black;
+}
+.name-col {
     grid-area: "names";
+    padding: 5px;
+    margin: 5px 0;
 }
-li:nth-child(even) {
+
+.score-col {
     grid-area: "scores";
+    padding: 5px;
+    margin: 5px 0;
+}
+.scores-btn {
+    display: inline;
+    margin: 10px;
 }

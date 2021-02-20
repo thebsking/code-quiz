@@ -14,9 +14,9 @@ for (var i = 0; i < scoreArray.length; i++) {
     let listName = document.createElement("li");
     let listScore = document.createElement("li");
     listName.textContent = scoreArray[i].initials;
-    scoreList.appendChild(listName);
+    scoreList.appendChild(listName).classList.add("name-col");
     listScore.textContent = scoreArray[i].score;
-    scoreList.appendChild(listScore);
+    scoreList.appendChild(listScore).classList.add("score-col");
 }}
 
 //create buttons to clear scores & play again 
@@ -26,8 +26,8 @@ clearButton.textContent = "Clear All Scores";
 playButton.textContent = "Play Again";
 
 //append buttons to page
-mainEl.appendChild(clearButton);
-mainEl.appendChild(playButton);
+mainEl.appendChild(clearButton).classList.add("scores-btn");
+mainEl.appendChild(playButton).classList.add("scores-btn");
 
 //event listeners for buttons
 clearButton.addEventListener("click", function (event){
