@@ -84,10 +84,12 @@ function endGame(){
     })
     return;
 }
-
+ 
  //content of the quiz 
 function runTheGame () {
-  //display quiz content
+    //hide welcome header
+    document.querySelector('#welcome-header').style.display = "none";
+    //display quiz content
     startBtn.style.display = 'none';
     let q = 0;
     // if(q === 5){
