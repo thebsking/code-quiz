@@ -32,7 +32,9 @@ let testContent = [
         answer: '0'
     },
 ];
-let timeLeft
+let timeLeft;
+let scoreStore = window.localStorage;
+let scoreArray = [];
 
 //start button listener
 startBtn.addEventListener('click', function(){
@@ -65,6 +67,20 @@ function endGame(){
     questionArea.textContent = "Game Over. You're score is: " + userScore;
     timer.style.display = "none";
     document.querySelector("#high-score").style.display ='block';
+    document.querySelector("#submit-score").addEventListener('click', function(event){
+        event.preventDefault();
+        var initials = document.querySelector("#initials").value;
+        let finalScore = {initials: initials, score: userScore};
+        let scoreList = scoreStore.getItem("scores")
+        if (scoreList == null){
+            scoreArray = [];
+        } else {
+            scoreArray = JSON.parse(scoreList)
+        }
+        scoreArray.push(finalScore);
+        scoreStore.setItem("scores", JSON.stringify(scoreArray));
+
+    })
     return;
 }
 
